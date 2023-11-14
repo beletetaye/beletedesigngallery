@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin</title>
+  <link rel="stylesheet" href="/styles/style.css" />
+</head>
+
+<body class="admin-body">
+  <div class="admin-container">
+    <div class="admin-content">
+      <div class="admin-header">
+        <h1>Welcome admin!</h1>
+        <a href="/logout">Logout</a>
+      </div>
+      <h2 class="custom">Your customers:</h2>
+      <!-- Customer registers -->
+      <table>
+        <tr>
+          <th>No</th>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Address</th>
+          <th>Project</th>
+          <th>Design Code</th>
+          <th>Area</th>
+          <th>ID card</th>
+          <th>Home Image</th>
+        </tr>
+        <% for(let customer of customers) {%> <% index += 1 %>
+        <tr>
+          <td><%= index %>.</td>
+          <td><%= customer.username %></td>
+          <td><%= customer.phone %></td>
+          <td><%= customer.address %></td>
+          <td><%= customer.project %></td>
+          <td><%= customer.designcode %></td>
+          <td><%= customer.area %></td>
+          <td><a href="<%- customer.idcard.url %>">Image Link</a></td>
+          <td><a href="<%- customer.homeimage.url %>">Image Link</a></td>
+        </tr>
+        <% } %>
+      </table>
+
+      <!-- Job offer registers -->
+      <h2 class="custom">Job offer registers:</h2>
+      <table>
+        <tr>
+          <th>No</th>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Address</th>
+          <th>ID image</th>
+        </tr>
+        <% for(let offer of offers) {%> <% i += 1 %>
+        <tr>
+          <td><%= i %>.</td>
+          <td><%= offer.name %></td>
+          <td><%= offer.phone %></td>
+          <td><%= offer.address %></td>
+          <td><a href="<%- offer.image.url %>">ID Link</a></td>
+        </tr>
+        <% } %>
+      </table>
+      <!-- Feedbacks -->
+      <h2 class="custom">New Feedbacks:</h2>
+      <table>
+        <tr>
+          <th>No</th>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Message</th>
+        </tr>
+        <% for(let feedback of feedbacks) {%> <% j += 1 %>
+        <tr>
+          <td><%= j %>.</td>
+          <td><%= feedback.name %></td>
+          <td><%= feedback.phone %></td>
+          <td><%= feedback.message %></td>
+        </tr>
+        <% } %>
+      </table>
+      <!-- Add work to your portfolio -->
+      <div class="work-form">
+        <h2>Add other works to your portfolio:</h2>
+        <form action="/admin/addwork" method="post" enctype="multipart/form-data">
+          <input type="text" placeholder="Work title" name="title" required />
+          <input type="text" placeholder="Work detail" name="detail" required />
+          <input type="file" name="image" required />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+      <div class="work-form">
+        <h2>Add other services to your portfolio:</h2>
+        <form action="/admin/addservice" method="post" enctype="multipart/form-data">
+          <input type="text" placeholder="Service title" name="service_title" required />
+          <input type="text" placeholder="Service detail" name="service_detail" required />
+          <input type="file" name="service_image" required />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

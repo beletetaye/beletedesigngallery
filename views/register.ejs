@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <head>
+    <title>contact form of html to email</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+      }
+      .container {
+        width: 100%;
+        height: 100vh;
+        background: #056457;
+      }
+      form {
+        background: rgb(28, 28, 28);
+        display: flex;
+        flex-direction: column;
+        padding: 2vw 4vw;
+        width: 90%;
+        max-width: 600px;
+        border-radius: 10px;
+        color: white;
+        font-size: 15px;
+      }
+      form h1 {
+        color: #555;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #056457;
+      }
+      form button {
+        padding: 15px;
+        background: red;
+        color: #fff;
+        font-size: 18px;
+        border: 0;
+        outline: none;
+        cursor: pointer;
+        width: 150px;
+        margin: 20px auto 0;
+        border-radius: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <div class="container">
+        <form method="post" action="/register" enctype="multipart/form-data">
+          <h1>REGISTER</h1>
+          <label> name:</label>
+          <input type="text" name="username" id="name" required />
+          <label>phone no:</label>
+          <input type="phone" id="phone" name="phone" required />
+          <label> address:</label>
+          <input type="text" id="address" name="address" required />
+          <label> project type:</label>
+          <input type="text" id="project type" name="project" required />
+          <label> design code:</label>
+          <input type="text" id="project type" name="designcode" required />
+          <label> address:</label>
+          <input type="text" id="address" />
+          <label> the area of loor:</label>
+          <input type="text" id="address" name="area" required />
+          <label>upload id </label><br />
+          <input
+            type="file"
+            id="file"
+            name="idcard"
+            accept="image/*"
+            placeholder="bank  payment reciept"
+            required
+          />
+          <label>external images of home</label><br />
+          <input
+            type="file"
+            id="fle"
+            name="homeimage"
+            accept="image/*"
+            placeholder="external images of home"
+            required
+          />
+          <textarea
+            name="message"
+            rows="6"
+            name="detail"
+            placeholder="write here the area and any detail of your house"
+          ></textarea>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </center>
+  </body>
+</html>

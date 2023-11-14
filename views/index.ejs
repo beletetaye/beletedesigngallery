@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UV-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>beletedesigngallery.com</title>
+  <link rel="stylesheet" href="/styles/style.css">
+  <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorign="anonymous"></script>
+
+</head>
+
+<body>
+
+  <div id="header">
+    <div class="container">
+      <nav>
+        <ul id="sidemenu">
+
+          <li><a href="#header">Home</a></li>
+          <li><a href="#about">About us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#books">Books</a></li>
+          <img src="/images/cm.png" class="fas" onclick="closemenu()">
+        </ul>
+        <img src="/images/om.png" class="fas" onclick="openmenu()">
+      </nav>
+      <div class="header-text">
+        <br><br>
+        <h1>Hi i am<span> drywall</span><br> installer & graphics<br> designer from ethiopia</h1>
+        <br>
+      </div>
+    </div>
+  </div>
+
+  <!-----about---->
+  <div id="about">
+    <div class="container">
+      <div class="row">
+        <div class="about-col-1">
+          <img src="/images/me.jpg">
+        </div>
+        <div class="about-col-2">
+          <h1 class="sub-title">About me</h1>
+          <p id="am">I am writing to express my interest in working with you on your house design and architecture project. I am a professional house designer and architect with over 5 of experience in creating beautiful and functional spaces for various purposes.
+            House design and architecture is more than just aesthetics. It is a way to create a living environment that reflects your personality, lifestyle, and preferences. House design and architecture can help you enhance your comfort, convenience, and well-being. Whether you need a new house, a renovation, an extension, or any other architectural service, I can help you create a space that suits your needs and goals.
+            I have worked with clients from different locations and backgrounds, such as [examples of previous clients]. I have successfully delivered projects that met or exceeded their expectations. You can see some of my previous work in my portfolio.
+            I am passionate about house design and architecture and always eager to learn new skills and techniques. I keep myself updated with the latest trends and best practices in the field. I use the most advanced software and tools to create high-quality and original designs.
+            I would love to work with you on your house design and architecture project and help you achieve your desired results. I can offer you the following benefits:
+
+            A personalized and creative approach to your project
+
+            A fast and reliable delivery of your design
+
+            A reasonable and competitive price
+
+            A free revision until you are satisfied with the design
+
+            A long-term relationship and support
+          </p>
+          <div class="tab-titles">
+            <p class="tab-links active-link" onclick="opentab('skills')">skills</p>
+            <p class="tab-links" onclick="opentab('experience')">experience</p>
+            <p class="tab-links" onclick="opentab('education')">education</p>
+          </div>
+          <div class="tab-contents active-tab" id="skills">
+            <ul>
+              <li> <span>drywall </span><br>inistaller of internal designs</li>
+              <li> <span>web </span><br>developer portifolio websites and <br>E-commerce websites</li>
+              <li> <span>graphics </span><br>designer of 3d animatiomns and lexury homes</li>
+            </ul>
+          </div>
+
+          <div class="tab-contents" id="experience">
+            <ul>
+              <li> <span>2015-current </span><br>8 years at drywallinistaller</li>
+              <li> <span>2021-current</span><br>above 1 year exprience to be programmar is my great dream.<br>i study programming daily</li>
+              <li> <span>2022-current </span><br>around one yeas</li>
+            </ul>
+          </div>
+
+          <div class="tab-contents" id="education">
+            <ul>
+              <li> <span>2015-2017</span><br>indidual training and join professional skills worker</li>
+              <li> <span>2020-current</span><br>online study</li>
+              <li> <span>2022-current </span><br>online study my commitment is more my work is hard
+                <br>i never study my study i am a teacher of my self
+              </li>
+            </ul>
+          </div>
+        </div>
+        </di>
+      </div>
+    </div>
+
+    <!-------services-------->
+    <hr>
+    <div id="services">
+      <div class="container">
+        <h1 class="sub-title">My services</h1>
+        <div class="services-list">
+          <% for (let service of services) {%>
+          <div>
+            <img src="<%= service.service_image.url %>" width="80px">
+            <h3><%= service.service_title %></h3>
+            <p><%= service.service_detail  %></p>
+            <a href="">See more</a>
+          </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+
+    <!------portifolio----->
+
+    <div id="portfolio">
+      <div class="container">
+        <h1 class="sub-title">My work</h1>
+        <div class="work-list">
+          <% for (let work of works) { %>
+          <div class="work">
+            <img src="<%= work.image.url %>">
+            <div class="layer">
+              <h3><%= work.title %></h3>
+              <p><%= work.detail %>clickhere to get technical drawing algorthim </p>
+              <a href="/register">Get DS</a>
+            </div>
+          </div>
+          <% } %>
+        </div>
+        <a href="see more.html" class="btn">see more</a>
+      </div>
+    </div>
+    <hr>
+    <div id="books">
+      <div class="container">
+        <h1 class="sub-title">technology books</h1>
+        <div class="services-list">
+          <div>
+            <img src="/images/boc.png" width="80px">
+            <h3>conistruction technology</h3>
+            <ul>
+              <li>your life is smart with your home</li>
+              <li> you can build your future</li>
+              <li>tomorrow is build with today</li>
+              <li>the revolution of conistruction industry</li>
+              <li>skilled man power and conistruction industry</li>
+            </ul>
+            <p>
+              barrule jajjabduu sirna ijaarsaa irratti hundoofyee beektoota addunyaa fi haala qabatamaa jaarraa 21ffaa kessaa jiru qabanne dhufna
+            </p>
+            <a href="#">coming soon</a>
+          </div>
+          <div>
+            <img src="/images/bo.png" width="80px">
+            <h3>programming language</h3>
+            <ul>
+              <li>the power of self confidency</li>
+              <li> world with programming</li>
+              <li>the power of artificial intelengency</li>
+              <li>the future world</li>
+              <li>skilled man power and digital world</li>
+            </ul>
+            <br>
+            <br>
+            <p>
+              qaroomina jaarraa 21ffaa fi addunyaa dijitaala uummuuf qooda guddaa kan taphate programming language ykn afaan koompitaraati kitaabotaa hedduu isinif maxxansina
+            </p>
+            <a href="#">coming soon</a>
+          </div>
+          <div>
+            <img src="/images/bog.png" width="80px">
+            <h3>the imagination of world</h3>
+            <ul>
+              <li>3d project</li>
+              <li>3d animation</li>
+              <li>realy world with graphics</li>
+            </ul>
+            <br>
+            <br>
+            <p>waan jireenyi keessan boru fakkaattu fi hawwii dhaloota boruu isiniif guutuu dandahuu qabataman,isinitti argisisuf virtuality 3d technology fi artificial intelegence;fiixee qaroominaa addunyaan bira geesse duukaa akka hirirtan afferamtani jirtu
+              tajaajila tola hedduu isiniif dhiheessina</p>
+            <a href="">coming soon</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-----------contact------->
+    <div id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="contact-left">
+            <h1 class="sub-title">Contact me</h1>
+            <p>belearchtect2022@gmail.com</p>
+            <p>0920058409</p>
+            <div class="social-icons">
+              <a href="https://facebook.com/belete taye"><img src="/images/pins/f.png"></a>
+              <a href="https://twitter.com/belete taye"><img src="/images/pins/tw.jpg"></a>
+              <a href="#"><img src="/images/pins/t.png"></a>
+            </div>
+            <a href="/get" class="btn btn2">get job offer</a>
+          </div>
+          <div class="contact-right">
+            <form method="post" action="/contact">
+              <input type="text" name="name" placeholder="your name" required>
+              <input type="number" name="phone" placeholder="phone" required>
+              <textarea name="message" rows="6" placeholder="your message" required></textarea>
+              <button type="submit" class="btn btn2">Submit<button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>Copyright is reserved @belete taye</p>
+      </div>
+    </div>
+    <script>
+      var tablinks = document.getElementsByClassName("tab-links");
+      var tabcontents = document.getElementsByClassName("tab-contents");
+
+      function opentab(tabname) {
+        for (tablink of tablinks) {
+          tablink.classList.remove("active-link");
+        }
+        for (tabcontent of tabcontents) {
+          tabcontent.classList.remove("active-tab");
+        }
+        event.currentTarget.classList.add("active-link");
+        document.getElementById(tabname).classList.add("active-tab");
+      }
+    </script>
+    <script>
+      var sidemenu = document.getElementById("sidemenu");
+
+      function openmenu() {
+        sidemenu.style.right = "0";
+      }
+
+      function closemenu() {
+        sidemenu.style.right = "-200px";
+      }
+    </script>
+</body>
+
+</html>
