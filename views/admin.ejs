@@ -9,6 +9,21 @@
 </head>
 
 <body class="admin-body">
+  <% if(success && success.length) { %>
+
+  <div class="flash">
+    <p class="message">
+      <%= success %>
+
+    </p>
+  </div>
+  <% } else if (error && error.length) {%>
+  <div class="flash">
+    <p class="message">
+      <%= error %>
+    </p>
+  </div>
+  <% } %>
   <div class="admin-container">
     <div class="admin-content">
       <div class="admin-header">
@@ -85,6 +100,46 @@
           <td><%= feedback.phone %></td>
           <td><%= feedback.message %></td>
           <td><a href="/feedbacks/delete/<%= feedback._id %>">Delete?</a></td>
+        </tr>
+        <% } %>
+      </table>
+      <!-- Edit works of your portfolio -->
+      <h2 class="custom">Your works:</h2>
+      <table>
+        <tr>
+          <th>No</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Image</th>
+          <th>Actions</th>
+        </tr>
+        <% for(let work of works) {%> <% k += 1 %>
+        <tr>
+          <td><%= k %>.</td>
+          <td><%= work.title %></td>
+          <td><%= work.detail %></td>
+          <td><a href="<%= work.image.url %>">Image</a></td>
+          <td><a href="/works/delete/<%= work._id %>">Delete?</a></td>
+        </tr>
+        <% } %>
+      </table>
+      <!-- Edit services of your portfolio -->
+      <h2 class="custom">Your services:</h2>
+      <table>
+        <tr>
+          <th>No</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Image</th>
+          <th>Actions</th>
+        </tr>
+        <% for(let service of services) {%> <% m += 1 %>
+        <tr>
+          <td><%= k %>.</td>
+          <td><%= service.service_title %></td>
+          <td><%= service.service_detail %></td>
+          <td><a href="<%= service.service_image.url %>">Image</a></td>
+          <td><a href="/services/delete/<%= service._id %>">Delete?</a></td>
         </tr>
         <% } %>
       </table>

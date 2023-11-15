@@ -102,19 +102,25 @@ app.post(
 app.get("/admin", requireLogin, async (req, res) => {
   const customers = await Customer.find({});
   const works = await Work.find({});
+  const services = await Service.find({});
   const offers = await Offer.find({});
   const feedbacks = await Feedback.find({});
   let index = 0;
   let i = 0;
   let j = 0;
+  let k = 0;
+  let m = 0;
   req.flash("success", "Admin logged in.");
   res.render("admin", {
     customers: customers,
     index: index,
     works: works,
+    services: services,
     offers: offers,
     i: i,
     j: j,
+    k: k,
+    m: m,
     feedbacks: feedbacks,
   });
 });
@@ -140,6 +146,20 @@ app.get("/feedbacks/delete/:id", requireLogin, async (req, res) => {
   res.redirect("/admin");
 });
 
+app.get("/works/delete/:id", requireLogin, async (req, res) => {
+  const { id } = req.params;
+  await Work.findByIdAndDelete(id);
+  req.flash("success", "Successfully deleted work.");
+  res.redirect("/admin");
+});
+
+app.get("/services/delete/:id", requireLogin, async (req, res) => {
+  const { id } = req.params;
+  await Service.findByIdAndDelete(id);
+  req.flash("success", "Successfully deleted service.");
+  res.redirect("/admin");
+});
+
 app.get("/admin/login", (req, res) => {
   res.render("login");
 });
@@ -160,6 +180,7 @@ app.post(
     res.redirect("/admin");
   }
 );
+
 app.post(
   "/admin/addservice",
   requireLogin,

@@ -12,11 +12,22 @@
 </head>
 
 <body>
-  <!-- <div class="flash">
-    <p><%= success %></p>
-  </div> -->
-
   <div id="header">
+    <% if(success && success.length) { %>
+
+    <div class="flash">
+      <p class="message">
+        <%= success %>
+
+      </p>
+    </div>
+    <% } else if (error && error.length) {%>
+    <div class="flash">
+      <p class="message">
+        <%= error %>
+      </p>
+    </div>
+    <% } %>
     <div class="container">
       <nav>
         <ul id="sidemenu">
