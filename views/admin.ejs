@@ -28,6 +28,7 @@
           <th>Area</th>
           <th>ID card</th>
           <th>Home Image</th>
+          <th>Actions</th>
         </tr>
         <% for(let customer of customers) {%> <% index += 1 %>
         <tr>
@@ -40,6 +41,7 @@
           <td><%= customer.area %></td>
           <td><a href="<%- customer.idcard.url %>">Image Link</a></td>
           <td><a href="<%- customer.homeimage.url %>">Image Link</a></td>
+          <td><a href="/customers/delete/<%= customer._id %>">Delete?</a></td>
         </tr>
         <% } %>
       </table>
@@ -53,6 +55,7 @@
           <th>Phone</th>
           <th>Address</th>
           <th>ID image</th>
+          <th>Actions</th>
         </tr>
         <% for(let offer of offers) {%> <% i += 1 %>
         <tr>
@@ -61,6 +64,7 @@
           <td><%= offer.phone %></td>
           <td><%= offer.address %></td>
           <td><a href="<%- offer.image.url %>">ID Link</a></td>
+          <td><a href="/offers/delete/<%= offer._id %>">Delete?</a></td>
         </tr>
         <% } %>
       </table>
@@ -72,6 +76,7 @@
           <th>Name</th>
           <th>Phone</th>
           <th>Message</th>
+          <th>Actions</th>
         </tr>
         <% for(let feedback of feedbacks) {%> <% j += 1 %>
         <tr>
@@ -79,6 +84,7 @@
           <td><%= feedback.name %></td>
           <td><%= feedback.phone %></td>
           <td><%= feedback.message %></td>
+          <td><a href="/feedbacks/delete/<%= feedback._id %>">Delete?</a></td>
         </tr>
         <% } %>
       </table>

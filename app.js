@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const express = require("express");
+const flash = require("connect-flash");
 const session = require("express-session");
 const path = require("path");
 const ejsEngine = require("ejs-mate");
@@ -30,6 +31,13 @@ app.use(
     saveUninitialized: true,
   })
 );
+
+app.use(flash());
+app.use((req, res, next) => {
+  res.locals.success = req.flash("success");
+  res.locals.error = req.flash("error");
+  next();
+});
 
 const dbUrl = process.env.DB_URL;
 
@@ -62,6 +70,7 @@ app.get("/", async (req, res) => {
 app.post("/contact", async (req, res) => {
   const newFeedback = new Feedback(req.body);
   await newFeedback.save();
+  req.flash("success", "Successfully added a new feedback.");
   res.redirect("/");
 });
 
@@ -85,7 +94,7 @@ app.post(
     newCustomer.idcard = idcard;
     newCustomer.homeimage = homeimage;
     await newCustomer.save();
-    console.log(newCustomer);
+    req.flash("success", "Successfully registered!");
     res.redirect("/");
   }
 );
@@ -98,6 +107,7 @@ app.get("/admin", requireLogin, async (req, res) => {
   let index = 0;
   let i = 0;
   let j = 0;
+  req.flash("success", "Admin logged in.");
   res.render("admin", {
     customers: customers,
     index: index,
@@ -107,6 +117,27 @@ app.get("/admin", requireLogin, async (req, res) => {
     j: j,
     feedbacks: feedbacks,
   });
+});
+
+app.get("/customers/delete/:id", requireLogin, async (req, res) => {
+  const { id } = req.params;
+  await Customer.findByIdAndDelete(id);
+  req.flash("success", "Successfully deleted customer.");
+  res.redirect("/admin");
+});
+
+app.get("/offers/delete/:id", requireLogin, async (req, res) => {
+  const { id } = req.params;
+  await Offer.findByIdAndDelete(id);
+  req.flash("success", "Successfully deleted offer.");
+  res.redirect("/admin");
+});
+
+app.get("/feedbacks/delete/:id", requireLogin, async (req, res) => {
+  const { id } = req.params;
+  await Feedback.findByIdAndDelete(id);
+  req.flash("success", "Successfully deleted feedback.");
+  res.redirect("/admin");
 });
 
 app.get("/admin/login", (req, res) => {
@@ -125,6 +156,7 @@ app.post(
     const newWork = new Work(req.body);
     newWork.image = file;
     newWork.save();
+    req.flash("success", "Successfully added work.");
     res.redirect("/admin");
   }
 );
@@ -140,6 +172,7 @@ app.post(
     const newService = new Service(req.body);
     newService.service_image = file;
     newService.save();
+    req.flash("success", "Successfully added service.");
     res.redirect("/admin");
   }
 );
@@ -153,15 +186,18 @@ app.post("/admin/login", async (req, res) => {
       req.session.userId = adminUsername;
       res.redirect("/admin");
     } else {
-      res.send("Username or password incorrect");
+      req.flash("error", "Username or password not right.");
+      res.render("login");
     }
   } else {
+    req.flash("error", "Username or password not right.");
     res.redirect("/admin");
   }
 });
 
 app.get("/logout", (req, res) => {
   req.session.destroy(() => {
+    req.flash("success", "Successfully logged out.");
     res.redirect("/admin/login");
   });
 });
@@ -190,9 +226,10 @@ app.post("/getjoboffer", upload.single("image"), async (req, res) => {
   const newOffer = new Offer(req.body);
   newOffer.image = file;
   await newOffer.save();
-
+  req.flash("success", "Successfully registered to get an offer.");
   res.redirect("/");
 });
+
 app.get("/seemore", (req, res) => {
   res.render("seemore");
 });
