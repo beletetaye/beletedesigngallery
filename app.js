@@ -94,7 +94,10 @@ app.post(
     newCustomer.idcard = idcard;
     newCustomer.homeimage = homeimage;
     await newCustomer.save();
-    req.flash("success", "Successfully registered!");
+    req.flash(
+      "success",
+      "Welcome to our service. We will complete your design within two weeks and let you know thank you."
+    );
     res.redirect("/");
   }
 );
@@ -247,7 +250,10 @@ app.post("/getjoboffer", upload.single("image"), async (req, res) => {
   const newOffer = new Offer(req.body);
   newOffer.image = file;
   await newOffer.save();
-  req.flash("success", "Successfully registered to get an offer.");
+  req.flash(
+    "success",
+    "Thank you for choosing us to work with us and let us know about you via our email tayebelete0@gmail.com"
+  );
   res.redirect("/");
 });
 
