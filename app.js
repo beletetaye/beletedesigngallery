@@ -193,6 +193,9 @@ app.post("/getjoboffer", upload.single("image"), async (req, res) => {
 
   res.redirect("/");
 });
+app.get("/seemore", (req, res) => {
+  res.render("seemore");
+});
 
 app.get("*", (req, res) => {
   res.send("404 NOT FOUND!");
